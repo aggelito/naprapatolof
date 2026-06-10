@@ -1,9 +1,16 @@
 ---
 const services = [
-  'Ont i rygg, nacke och axlar',
-  'Stelhet, huvudvärk och återkommande besvär',
-  'Idrottsrelaterade skador och rehab',
-  'Råd kring rörelse, styrka och vardagsbelastning',
+  'Rygg, nacke och axlar',
+  'Käke, huvudvärk och käkrelaterad nacksmärta',
+  'Idrottsrelaterade skador och överbelastning',
+  'Stelhet, rörlighet och återkommande besvär',
+  'Rehabövningar och tydlig plan framåt',
+  'Råd kring träning, arbete och vardagsbelastning',
+];
+
+const prices = [
+  { label: 'Nybesök', time: '40 min', price: '680 kr' },
+  { label: 'Återbesök', time: '30 min', price: '680 kr' },
 ];
 ---
 
@@ -13,29 +20,33 @@ const services = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Olof Naprapati hjälper dig med rygg, nacke, leder, muskler och rehab. En lugn, tydlig och jordnära naprapatmottagning."
+      content="Olof Lancing, legitimerad naprapat i Simrishamn. Hands-on behandling, rehabövningar och hjälp med rygg, nacke, käke, leder och muskler."
     />
-    <title>Olof Naprapati</title>
+    <title>Olof Lancing Naprapat i Simrishamn</title>
   </head>
   <body>
     <main>
       <section class="hero section">
         <nav class="nav" aria-label="Huvudmeny">
-          <a class="brand" href="#top" aria-label="Olof Naprapati startsida">Olof Naprapati</a>
+          <a class="brand" href="#top" aria-label="Olof Lancing Naprapat startsida">
+            Olof Lancing Naprapat
+          </a>
           <div class="links">
             <a href="#behandling">Behandling</a>
-            <a href="#besok">Inför besöket</a>
+            <a href="#om">Om Olof</a>
+            <a href="#priser">Priser</a>
             <a href="#kontakt">Kontakt</a>
           </div>
         </nav>
 
         <div id="top" class="hero-grid">
           <div>
-            <p class="eyebrow">Naprapat · behandling · rehab</p>
-            <h1>Hjälp när kroppen bråkar.</h1>
+            <p class="eyebrow">Leg. naprapat i Simrishamn</p>
+            <h1>Naprapatvård som är tydlig, praktisk och nära.</h1>
             <p class="lead">
-              Enkel, rak och trygg naprapatvård för dig som har ont, känner dig stel
-              eller vill tillbaka till vardag och träning utan krångel.
+              Olof Lancing hjälper dig med smärta, stelhet och besvär i rygg, nacke,
+              käke, leder och muskler. Behandling på plats kombineras med bra
+              rehabövningar så att du vet vad nästa steg är.
             </p>
             <div class="actions">
               <a class="button primary" href="#kontakt">Boka eller hör av dig</a>
@@ -44,11 +55,14 @@ const services = [
           </div>
 
           <aside class="card hero-card" aria-label="Kort om mottagningen">
-            <span class="pill">Ny mottagning öppnar snart</span>
-            <h2>Olof</h2>
+            <span class="pill">Simrishamn · 08–16</span>
+            <h2>Ny mottagning i Simrishamn.</h2>
             <p>
-              Blivande naprapat med fokus på tydlig undersökning, praktisk behandling
-              och övningar som faktiskt går att göra.
+              Till en början finns Olof på plats i Simrishamn två dagar i veckan och
+              fortsätter tre dagar i veckan på sin nuvarande anställning i Malmö.
+            </p>
+            <p class="muted">
+              Telefon och bokningsrutin kommer upp här när allt är klart.
             </p>
           </aside>
         </div>
@@ -57,10 +71,11 @@ const services = [
       <section id="behandling" class="section split">
         <div>
           <p class="eyebrow">Behandling</p>
-          <h2>För rygg, nacke, leder och muskler.</h2>
+          <h2>För kroppen som krånglar. Inte mer dramatiskt än så.</h2>
           <p>
-            Besöket börjar med en genomgång av dina besvär. Därefter görs en undersökning
-            och en plan: behandling på plats, enkla övningar och råd för nästa steg.
+            Besöket börjar med en genomgång av dina besvär. Därefter görs en
+            undersökning och en plan: hands-on behandling, övningar och råd som går
+            att använda i vardagen.
           </p>
         </div>
         <div class="service-list">
@@ -68,10 +83,36 @@ const services = [
         </div>
       </section>
 
+      <section id="om" class="section about-grid">
+        <div class="portrait-placeholder" aria-label="Porträttbild kommer snart">
+          <span>Bild kommer snart</span>
+        </div>
+        <div>
+          <p class="eyebrow">Om Olof</p>
+          <h2>Olof Lancing, legitimerad naprapat.</h2>
+          <p>
+            Olof arbetar mycket hands-on på plats och lägger stor vikt vid att du får
+            med dig tydliga rehabövningar efter behandlingen. Målet är att du ska
+            förstå vad som händer i kroppen, vad du kan göra själv och hur du tar dig
+            vidare på ett rimligt sätt.
+          </p>
+          <p>
+            Under utbildningen gjorde Olof sitt examensarbete om käkrelaterad
+            nacksmärta. Det intresset följer med in i kliniken, tillsammans med ett
+            brett fokus på besvär från rygg, nacke, leder, muskler och idrott.
+          </p>
+          <p>
+            Mottagningen ligger i Simrishamn, där namnet Lancing redan har lokal
+            förankring. Tonen är enkel: seriöst, tryggt och personligt utan att bli
+            stelt.
+          </p>
+        </div>
+      </section>
+
       <section id="besok" class="section info-panel">
         <div>
           <p class="eyebrow">Inför besöket</p>
-          <h2>Kom som du är. Ta med det som hjälper.</h2>
+          <h2>Så går ett besök till.</h2>
         </div>
         <div class="steps">
           <article>
@@ -87,25 +128,57 @@ const services = [
           <article>
             <strong>3</strong>
             <h3>Plan framåt</h3>
-            <p>Du får enkla råd och övningar. Inget cirkusnummer. Bara det som behövs.</p>
+            <p>Du får råd och övningar som passar besväret. Inget cirkusnummer.</p>
           </article>
+        </div>
+      </section>
+
+      <section id="priser" class="section prices">
+        <div>
+          <p class="eyebrow">Priser</p>
+          <h2>Behandlingar.</h2>
+        </div>
+        <div class="price-list">
+          {prices.map((item) => (
+            <article class="price-card">
+              <div>
+                <h3>{item.label}</h3>
+                <p>{item.time}</p>
+              </div>
+              <strong>{item.price}</strong>
+            </article>
+          ))}
         </div>
       </section>
 
       <section id="kontakt" class="section contact">
         <div>
-          <p class="eyebrow">Kontakt</p>
-          <h2>Bokning öppnar snart.</h2>
+          <p class="eyebrow">Kontakt och bokning</p>
+          <h2>Simrishamn till en början två dagar i veckan.</h2>
           <p>
-            Mottagningen är på gång. Tills bokningslänk och kontaktuppgifter är klara
-            fungerar den här sidan som en enkel presentation.
+            Öppettider är 08–16. Bokning sker via telefon till en början. Telefonnummer
+            läggs in här när mottagningen är redo att ta emot bokningar.
           </p>
         </div>
         <div class="card contact-card">
-          <p class="muted">
-            Vill du fylla på med adress, telefon, bokningslänk eller Instagram sen är det bara
-            att lägga till. Bättre än att hitta på kontaktuppgifter. Så roligt ska vi inte ha.
-          </p>
+          <dl>
+            <div>
+              <dt>Ort</dt>
+              <dd>Simrishamn</dd>
+            </div>
+            <div>
+              <dt>Tider</dt>
+              <dd>08–16</dd>
+            </div>
+            <div>
+              <dt>På plats</dt>
+              <dd>2 dagar i veckan i Simrishamn till en början</dd>
+            </div>
+            <div>
+              <dt>Bokning</dt>
+              <dd>Telefonnummer kommer snart</dd>
+            </div>
+          </dl>
           <a class="button primary" href="#top">Tillbaka upp</a>
         </div>
       </section>
@@ -124,6 +197,7 @@ const services = [
     --green: #496f55;
     --green-dark: #284233;
     --cream: #fff7e8;
+    --sage: #e5eddf;
   }
 
   * {
@@ -136,7 +210,9 @@ const services = [
 
   body {
     margin: 0;
-    background: var(--bg);
+    background:
+      radial-gradient(circle at top right, rgb(229 237 223 / 0.85), transparent 36rem),
+      var(--bg);
     color: var(--ink);
     font-family:
       Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -169,22 +245,30 @@ const services = [
   }
 
   .brand {
-    font-weight: 800;
-    letter-spacing: -0.03em;
+    font-weight: 850;
+    letter-spacing: -0.04em;
   }
 
   .links {
     display: flex;
-    gap: 22px;
+    flex-wrap: wrap;
+    gap: 18px;
     color: var(--muted);
     font-size: 0.95rem;
   }
 
+  .links a:hover,
+  .brand:hover {
+    color: var(--green-dark);
+  }
+
   .hero-grid,
   .split,
-  .contact {
+  .about-grid,
+  .contact,
+  .prices {
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
     gap: 48px;
     align-items: center;
   }
@@ -192,7 +276,7 @@ const services = [
   .eyebrow {
     margin: 0 0 14px;
     color: var(--green);
-    font-weight: 800;
+    font-weight: 850;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     font-size: 0.78rem;
@@ -206,11 +290,11 @@ const services = [
   }
 
   h1 {
-    max-width: 760px;
+    max-width: 900px;
     margin-bottom: 22px;
-    font-size: clamp(3.5rem, 10vw, 7.5rem);
-    line-height: 0.9;
-    letter-spacing: -0.08em;
+    font-size: clamp(3.3rem, 8vw, 7rem);
+    line-height: 0.92;
+    letter-spacing: -0.085em;
   }
 
   h2 {
@@ -226,7 +310,7 @@ const services = [
   }
 
   .lead {
-    max-width: 640px;
+    max-width: 690px;
     color: var(--muted);
     font-size: clamp(1.15rem, 2vw, 1.35rem);
   }
@@ -245,7 +329,7 @@ const services = [
     min-height: 48px;
     border-radius: 999px;
     padding: 0 22px;
-    font-weight: 800;
+    font-weight: 850;
     border: 1px solid var(--green-dark);
   }
 
@@ -259,7 +343,9 @@ const services = [
   }
 
   .card,
-  .info-panel {
+  .info-panel,
+  .portrait-placeholder,
+  .price-card {
     border: 1px solid var(--line);
     background: color-mix(in srgb, var(--card) 86%, white);
     border-radius: 32px;
@@ -279,13 +365,14 @@ const services = [
     display: inline-flex;
     border-radius: 999px;
     padding: 8px 12px;
-    background: #e5eddf;
+    background: var(--sage);
     color: var(--green-dark);
     font-size: 0.85rem;
-    font-weight: 800;
+    font-weight: 850;
   }
 
-  .service-list {
+  .service-list,
+  .price-list {
     display: grid;
     gap: 12px;
   }
@@ -296,6 +383,24 @@ const services = [
     border-radius: 20px;
     background: rgb(255 250 241 / 0.78);
     font-weight: 750;
+  }
+
+  .about-grid {
+    align-items: stretch;
+  }
+
+  .portrait-placeholder {
+    min-height: 520px;
+    display: grid;
+    place-items: center;
+    background:
+      linear-gradient(135deg, rgb(73 111 85 / 0.12), rgb(255 247 232 / 0.75)),
+      var(--card);
+  }
+
+  .portrait-placeholder span {
+    color: var(--green-dark);
+    font-weight: 850;
   }
 
   .info-panel {
@@ -326,6 +431,48 @@ const services = [
     color: var(--cream);
   }
 
+  .price-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .price-card p,
+  .price-card h3 {
+    margin-bottom: 0;
+  }
+
+  .price-card p {
+    color: var(--muted);
+  }
+
+  .price-card strong {
+    font-size: clamp(1.4rem, 3vw, 2.3rem);
+    letter-spacing: -0.05em;
+    white-space: nowrap;
+  }
+
+  dl {
+    display: grid;
+    gap: 18px;
+    margin: 0 0 28px;
+  }
+
+  dt {
+    color: var(--green);
+    font-size: 0.78rem;
+    font-weight: 850;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  dd {
+    margin: 4px 0 0;
+    font-weight: 750;
+  }
+
   .muted {
     color: var(--muted);
   }
@@ -349,15 +496,22 @@ const services = [
 
     .hero-grid,
     .split,
+    .about-grid,
     .contact,
+    .prices,
     .steps {
       grid-template-columns: 1fr;
     }
 
     .info-panel,
     .hero-card,
-    .contact-card {
+    .contact-card,
+    .price-card {
       padding: 24px;
+    }
+
+    .portrait-placeholder {
+      min-height: 320px;
     }
   }
 </style>
