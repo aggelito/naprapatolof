@@ -12,6 +12,9 @@ const prices = [
   { label: 'Nybesök', time: '40 min', price: '680 kr' },
   { label: 'Återbesök', time: '30 min', price: '680 kr' },
 ];
+
+const googleReviewUrl =
+  'https://www.google.com/search?q=Olof+Lancing+Naprapat+Simrishamn';
 ---
 
 <html lang="sv">
@@ -35,6 +38,7 @@ const prices = [
             <a href="#behandling">Behandling</a>
             <a href="#om">Om Olof</a>
             <a href="#priser">Priser</a>
+            <a href="#omdomen">Omdömen</a>
             <a href="#kontakt">Kontakt</a>
           </div>
         </nav>
@@ -148,6 +152,26 @@ const prices = [
               <strong>{item.price}</strong>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section id="omdomen" class="section review-panel">
+        <div>
+          <p class="eyebrow">Google-recensioner</p>
+          <h2>Har du varit på behandling?</h2>
+          <p>
+            En kort recension på Google hjälper nya patienter att hitta rätt och få en
+            känsla för mottagningen innan de bokar.
+          </p>
+        </div>
+        <div class="card review-card">
+          <p class="muted">
+            Klicka vidare till Google, sök upp Olof Lancing Naprapat i Simrishamn och
+            lämna några ärliga rader. Behöver inte vara poesi. Bara sant.
+          </p>
+          <a class="button primary" href={googleReviewUrl} target="_blank" rel="noopener noreferrer">
+            Lämna recension på Google
+          </a>
         </div>
       </section>
 
@@ -266,6 +290,7 @@ const prices = [
   .split,
   .about-grid,
   .contact,
+  .review-panel,
   .prices {
     display: grid;
     grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
@@ -353,7 +378,8 @@ const prices = [
   }
 
   .hero-card,
-  .contact-card {
+  .contact-card,
+  .review-card {
     padding: 32px;
   }
 
@@ -498,6 +524,7 @@ const prices = [
     .split,
     .about-grid,
     .contact,
+    .review-panel,
     .prices,
     .steps {
       grid-template-columns: 1fr;
@@ -506,6 +533,7 @@ const prices = [
     .info-panel,
     .hero-card,
     .contact-card,
+    .review-card,
     .price-card {
       padding: 24px;
     }
