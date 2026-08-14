@@ -103,12 +103,13 @@ const googleReviewUrl =
 <style>
   :root {
     color-scheme: light;
-    --bg: #f7f6f2;
-    --surface: #ecefe9;
-    --ink: #17201a;
-    --muted: #667068;
-    --line: #cfd4cd;
-    --accent: #365e45;
+    --bg: #f4c62e;
+    --surface: #b51f2a;
+    --ink: #5e151c;
+    --muted: #7b3433;
+    --line: rgb(94 21 28 / 0.28);
+    --accent: #b51f2a;
+    --on-accent: #fff3b0;
   }
 
   * {
@@ -214,13 +215,13 @@ const googleReviewUrl =
     align-items: center;
     padding: 0 22px;
     border-radius: 999px;
-    background: var(--ink);
-    color: white;
+    background: var(--accent);
+    color: var(--on-accent);
     font-weight: 700;
   }
 
   .button:hover {
-    background: var(--accent);
+    background: var(--ink);
   }
 
   .section {
@@ -281,6 +282,11 @@ const googleReviewUrl =
   .review {
     padding: 36px;
     background: var(--surface);
+    color: var(--on-accent);
+  }
+
+  .review .eyebrow {
+    color: var(--on-accent);
   }
 
   .text-link {
