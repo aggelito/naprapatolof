@@ -1,0 +1,477 @@
+/*
+ * Production-only adjustment layer.
+ * Keep the shared identity tokens in olof-theme.css unchanged and tune this
+ * file when the website needs its own spacing, composition or emphasis.
+ */
+:where([data-theme="olof-naprapati-light"], [data-theme="olof-naprapati-dark"]) {
+  --site-content-width: 72rem;
+  --site-reading-width: 42rem;
+  --site-gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --site-section-space: clamp(4.5rem, 9vw, 8rem);
+  --site-header-height: 4.75rem;
+  --site-focus-inner: var(--color-base-100);
+  --site-focus-outer: var(--color-base-content);
+  --site-clay: #c8785c;
+  --site-sage: #dfe8df;
+  --site-deep: #173b39;
+}
+
+[data-theme="olof-naprapati-dark"] {
+  --site-clay: #e29a7c;
+  --site-sage: #9fc8b0;
+  --site-deep: #0c1715;
+}
+
+html {
+  min-width: 20rem;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--site-header-height) + 1rem);
+  background: var(--color-base-100);
+  color: var(--color-base-content);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--color-base-100);
+  color: var(--color-base-content);
+  font-family: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+body::before {
+  position: fixed;
+  z-index: 60;
+  inset: 0 0 auto;
+  height: 0.3rem;
+  background: var(--site-clay);
+  content: "";
+}
+
+a {
+  text-underline-offset: 0.2em;
+}
+
+.btn {
+  min-height: 2.75rem;
+}
+
+.site-container {
+  width: min(var(--site-content-width), calc(100% - 2 * var(--site-gutter)));
+  margin-inline: auto;
+}
+
+.site-header {
+  position: sticky;
+  z-index: 50;
+  top: 0;
+  border-bottom: 1px solid color-mix(in oklab, var(--color-base-content) 12%, transparent);
+  background: color-mix(in oklab, var(--color-base-100) 94%, transparent);
+  box-shadow: 0 0.6rem 1.8rem color-mix(in oklab, var(--color-neutral) 7%, transparent);
+  backdrop-filter: blur(14px);
+}
+
+.site-header__inner {
+  display: flex;
+  min-height: var(--site-header-height);
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: "Roboto Slab Variable", Rockwell, Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.site-nav .btn {
+  min-height: 2.75rem;
+}
+
+.theme-toggle {
+  min-width: 2.75rem;
+  margin-inline-start: 0.35rem;
+}
+
+.theme-toggle:has(input:focus-visible) {
+  outline: 2px solid var(--site-focus-inner);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--site-focus-outer);
+}
+
+.theme-toggle input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(5rem, 11vw, 9rem);
+  background:
+    radial-gradient(circle at 88% 12%, color-mix(in oklab, var(--site-sage) 45%, transparent) 0, transparent 28rem),
+    radial-gradient(circle at 4% 100%, color-mix(in oklab, var(--site-clay) 9%, transparent) 0, transparent 22rem);
+}
+
+.hero__grid {
+  display: grid;
+  align-items: end;
+  gap: clamp(3rem, 8vw, 7rem);
+  grid-template-columns: minmax(0, 1.65fr) minmax(16rem, 0.65fr);
+}
+
+.hero__copy {
+  max-width: 53rem;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+  color: var(--color-primary);
+  font-size: 0.76rem;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 1.4rem;
+  height: 0.22rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--color-accent);
+  content: "";
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  font-family: "Roboto Slab Variable", Rockwell, Georgia, serif;
+  font-weight: 625;
+  text-wrap: balance;
+}
+
+h1 {
+  max-width: 52rem;
+  margin-bottom: 1.75rem;
+  font-size: clamp(3.1rem, 7.5vw, 6.8rem);
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+}
+
+h2 {
+  margin-bottom: 1.1rem;
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+}
+
+h3 {
+  margin-bottom: 0.55rem;
+  font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.intro {
+  max-width: var(--site-reading-width);
+  margin: 0 0 2rem;
+  color: color-mix(in oklab, var(--color-base-content) 76%, transparent);
+  font-size: clamp(1.12rem, 2vw, 1.35rem);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.hero__facts {
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border-radius: var(--radius-box);
+  background: color-mix(in oklab, var(--color-base-200) 90%, transparent);
+}
+
+.hero__facts dl {
+  display: grid;
+  margin: 0;
+  gap: 1.2rem;
+}
+
+.hero__facts div {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: 0 0.8rem;
+}
+
+.hero__facts svg {
+  margin-top: 0.15rem;
+  color: var(--color-accent);
+}
+
+.hero__facts dt {
+  color: color-mix(in oklab, var(--color-base-content) 65%, transparent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero__facts dd {
+  margin: 0;
+  font-family: "Roboto Slab Variable", Rockwell, Georgia, serif;
+  font-size: 1.12rem;
+  font-weight: 625;
+}
+
+.section {
+  padding-block: var(--site-section-space);
+}
+
+.section--sage {
+  background: var(--color-base-200);
+}
+
+.section-heading {
+  max-width: 50rem;
+  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.section-heading p:last-child {
+  max-width: var(--site-reading-width);
+  margin-bottom: 0;
+  color: color-mix(in oklab, var(--color-base-content) 72%, transparent);
+  font-size: 1.05rem;
+}
+
+.care-steps {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.care-step {
+  max-width: 21rem;
+}
+
+.care-step__number {
+  display: block;
+  margin-bottom: 1.1rem;
+  color: var(--color-accent);
+  font-family: "Roboto Slab Variable", Rockwell, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.care-step p {
+  margin-bottom: 0;
+  color: color-mix(in oklab, var(--color-base-content) 72%, transparent);
+}
+
+.speciality {
+  display: grid;
+  align-items: start;
+  gap: clamp(2.5rem, 7vw, 6rem);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+}
+
+.speciality__statement {
+  margin: 0;
+  padding-inline-start: 1.5rem;
+  border-inline-start: 0.3rem solid var(--color-accent);
+  font-family: "Roboto Slab Variable", Rockwell, Georgia, serif;
+  font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+  font-weight: 625;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+.price-list {
+  border-top: 1px solid color-mix(in oklab, var(--color-base-content) 18%, transparent);
+}
+
+.price-row {
+  display: grid;
+  align-items: center;
+  gap: 1.5rem;
+  padding-block: clamp(1.6rem, 4vw, 2.5rem);
+  border-bottom: 1px solid color-mix(in oklab, var(--color-base-content) 18%, transparent);
+  grid-template-columns: 1fr auto;
+}
+
+.price-row h3,
+.price-row p {
+  margin-bottom: 0;
+}
+
+.price-row p {
+  color: color-mix(in oklab, var(--color-base-content) 68%, transparent);
+}
+
+.price-row strong {
+  font-family: "Roboto Slab Variable", Rockwell, Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+
+.contact-band {
+  padding-block: var(--site-section-space);
+  border-block-start: 0.3rem solid var(--color-accent);
+  background: var(--color-primary);
+  color: var(--color-primary-content);
+  background-image: linear-gradient(112deg, color-mix(in oklab, var(--site-deep) 17%, transparent), transparent 60%);
+}
+
+.contact-band .eyebrow,
+.contact-band .muted {
+  color: var(--color-primary-content);
+}
+
+.contact-band__grid {
+  display: grid;
+  align-items: end;
+  gap: clamp(3rem, 8vw, 7rem);
+  grid-template-columns: minmax(0, 1.25fr) minmax(17rem, 0.75fr);
+}
+
+.contact-band h2 {
+  max-width: 43rem;
+}
+
+.contact-band p {
+  max-width: 40rem;
+}
+
+.contact-band .btn-ghost {
+  color: var(--color-primary-content);
+}
+
+.contact-band .btn-ghost:hover {
+  background: color-mix(in oklab, var(--color-primary-content) 12%, transparent);
+}
+
+.review-link {
+  display: flex;
+  min-height: 4rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1rem;
+  border-block: 1px solid color-mix(in oklab, var(--color-primary-content) 32%, transparent);
+  font-family: "Roboto Slab Variable", Rockwell, Georgia, serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 625;
+}
+
+.site-footer {
+  background: var(--color-neutral);
+  color: var(--color-neutral-content);
+}
+
+.site-footer__inner {
+  display: flex;
+  min-height: 7rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  font-size: 0.9rem;
+}
+
+.site-footer__inner p {
+  margin: 0;
+}
+
+.site-footer .btn-ghost {
+  min-height: 2.75rem;
+  color: var(--color-neutral-content);
+}
+
+.site-footer .btn-ghost:hover {
+  background: color-mix(in oklab, var(--color-neutral-content) 12%, transparent);
+}
+
+:where(a, button, input, [tabindex]):focus-visible {
+  outline: 2px solid var(--site-focus-inner);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--site-focus-outer);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-content);
+}
+
+@media (max-width: 52rem) {
+  .hero__grid,
+  .speciality,
+  .contact-band__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__facts {
+    max-width: 32rem;
+  }
+
+  .care-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .care-step {
+    max-width: var(--site-reading-width);
+  }
+}
+
+@media (max-width: 42rem) {
+  .site-header__inner {
+    align-items: flex-start;
+    padding-block: 0.75rem;
+  }
+
+  .site-nav {
+    align-items: flex-end;
+  }
+
+  .site-nav > a {
+    display: none;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 15vw, 4.7rem);
+  }
+
+  .price-row {
+    align-items: end;
+  }
+
+  .site-footer__inner {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

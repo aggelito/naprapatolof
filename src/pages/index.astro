@@ -1,14 +1,35 @@
 ---
+import { ArrowRight, CalendarDays, Clock3, ExternalLink, MapPin, Moon, Sun } from '@lucide/astro';
+import '../styles/global.css';
+
 const prices = [
   { label: 'Nybesök', time: '40 min', price: '750 kr' },
   { label: 'Återbesök', time: '30 min', price: '750 kr' },
+];
+
+const careSteps = [
+  {
+    number: '01',
+    title: 'Undersökning',
+    text: 'Vi går igenom dina besvär och undersöker vad som påverkar smärta, stelhet eller rörelse.',
+  },
+  {
+    number: '02',
+    title: 'Behandling',
+    text: 'Hands-on behandling anpassas efter det vi hittar och hur din kropp reagerar.',
+  },
+  {
+    number: '03',
+    title: 'Plan framåt',
+    text: 'Du får tydliga råd och rehabövningar som går att använda mellan besöken.',
+  },
 ];
 
 const googleReviewUrl =
   'https://www.google.com/search?q=Olof+Lancing+Naprapat+Simrishamn';
 ---
 
-<html lang="sv">
+<html lang="sv" data-theme="olof-naprapati-light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,344 +37,204 @@ const googleReviewUrl =
       name="description"
       content="Olof Lancing, legitimerad naprapat i Simrishamn. Behandling på måndagar och torsdagar."
     />
+    <meta name="theme-color" content="#f8f5ee" />
     <title>Olof Lancing Naprapat i Simrishamn</title>
+    <script is:inline>
+      (() => {
+        const light = 'olof-naprapati-light';
+        const dark = 'olof-naprapati-dark';
+        let saved;
+        try {
+          saved = localStorage.getItem('olof-theme');
+        } catch {}
+        const theme = saved === light || saved === dark
+          ? saved
+          : matchMedia('(prefers-color-scheme: dark)').matches ? dark : light;
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#top">Olof Lancing</a>
-      <nav aria-label="Huvudmeny">
-        <a href="#behandling">Behandling</a>
-        <a href="#priser">Priser</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
+      <div class="site-container site-header__inner">
+        <a class="brand" href="#top" aria-label="Olof Lancing, till sidans början">
+          <span>Olof Lancing</span>
+        </a>
+
+        <nav class="site-nav" aria-label="Huvudmeny">
+          <a class="btn btn-ghost btn-sm" href="#behandling">Behandling</a>
+          <a class="btn btn-ghost btn-sm" href="#priser">Priser</a>
+          <a class="btn btn-ghost btn-sm" href="#kontakt">Kontakt</a>
+          <label class="swap swap-rotate btn btn-ghost btn-circle btn-sm theme-toggle">
+            <input
+              id="theme-toggle"
+              type="checkbox"
+              aria-label="Byt till mörkt tema"
+            />
+            <Sun class="swap-off size-5" aria-hidden="true" />
+            <Moon class="swap-on size-5" aria-hidden="true" />
+          </label>
+        </nav>
+      </div>
     </header>
 
     <main id="top">
       <section class="hero">
-        <p class="eyebrow">Legitimerad naprapat · Simrishamn</p>
-        <h1>Hjälp med smärta, stelhet och besvär i kroppen.</h1>
-        <p class="intro">
-          Hands-on behandling, tydliga råd och rehabövningar anpassade efter dig.
-        </p>
-        <a class="button" href="#kontakt">Kontakt och bokning</a>
+        <div class="site-container hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow">Legitimerad naprapat · Simrishamn</p>
+            <h1>Hjälp med smärta, stelhet och besvär i kroppen.</h1>
+            <p class="intro">
+              Hands-on behandling, tydliga råd och rehabövningar anpassade efter dig.
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn-primary" href="#kontakt">
+                Kontakt och bokning
+                <ArrowRight class="size-4" aria-hidden="true" />
+              </a>
+              <a class="btn btn-ghost" href="#behandling">Så går det till</a>
+            </div>
+          </div>
+
+          <aside class="hero__facts" aria-label="Praktisk information">
+            <dl>
+              <div>
+                <CalendarDays class="size-5" aria-hidden="true" />
+                <span>
+                  <dt>Dagar</dt>
+                  <dd>Måndag och torsdag</dd>
+                </span>
+              </div>
+              <div>
+                <Clock3 class="size-5" aria-hidden="true" />
+                <span>
+                  <dt>Öppettider</dt>
+                  <dd>08–16</dd>
+                </span>
+              </div>
+              <div>
+                <MapPin class="size-5" aria-hidden="true" />
+                <span>
+                  <dt>Plats</dt>
+                  <dd>Simrishamn</dd>
+                </span>
+              </div>
+            </dl>
+          </aside>
+        </div>
       </section>
 
-      <section id="behandling" class="section">
-        <p class="eyebrow">Behandling</p>
-        <div class="section-grid">
-          <h2>En tydlig väg framåt.</h2>
-          <div>
+      <section id="behandling" class="section section--sage">
+        <div class="site-container">
+          <div class="section-heading">
+            <p class="eyebrow">Behandling</p>
+            <h2>En tydlig väg framåt.</h2>
             <p>
               Olof behandlar bland annat besvär i rygg, nacke, käke, leder och muskler.
-              Besöket omfattar undersökning, behandling och en plan för vad du kan göra
-              själv.
+              Besöket hålls konkret och anpassas efter vad du behöver hjälp med.
             </p>
-            <p class="note">
-              Särskilt intresse för käkrelaterad nacksmärta, idrottsbesvär och
-              överbelastning.
-            </p>
+          </div>
+
+          <div class="care-steps">
+            {careSteps.map((step) => (
+              <article class="care-step">
+                <span class="care-step__number" aria-hidden="true">{step.number}</span>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section id="priser" class="section">
-        <p class="eyebrow">Priser</p>
-        <div class="price-list">
-          {prices.map((item) => (
-            <article>
-              <div>
-                <h2>{item.label}</h2>
-                <p>{item.time}</p>
-              </div>
-              <strong>{item.price}</strong>
-            </article>
-          ))}
+      <section class="section">
+        <div class="site-container speciality">
+          <div>
+            <p class="eyebrow">Särskilt intresse</p>
+            <h2>Kunskap som går lite djupare.</h2>
+          </div>
+          <p class="speciality__statement">
+            Käkrelaterad nacksmärta, idrottsbesvär och överbelastning.
+          </p>
         </div>
       </section>
 
-      <section id="kontakt" class="section contact">
-        <div>
-          <p class="eyebrow">Simrishamn</p>
-          <h2>Måndagar och torsdagar.</h2>
-          <p>Öppettider 08–16. Bokning sker via telefon till en början.</p>
-          <p class="note">Telefonnummer och bokningsuppgifter kommer snart.</p>
+      <section id="priser" class="section section--sage">
+        <div class="site-container">
+          <div class="section-heading">
+            <p class="eyebrow">Priser</p>
+            <h2>Enkelt och tydligt.</h2>
+          </div>
+          <div class="price-list">
+            {prices.map((item) => (
+              <article class="price-row">
+                <div>
+                  <h3>{item.label}</h3>
+                  <p>{item.time}</p>
+                </div>
+                <strong>{item.price}</strong>
+              </article>
+            ))}
+          </div>
         </div>
-        <div class="review">
-          <p class="eyebrow">Google</p>
-          <h2>Läs eller lämna ett omdöme.</h2>
-          <a
-            class="text-link"
-            href={googleReviewUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Öppna Google-recensioner <span aria-hidden="true">↗</span>
-          </a>
+      </section>
+
+      <section id="kontakt" class="contact-band">
+        <div class="site-container contact-band__grid">
+          <div>
+            <p class="eyebrow">Kontakt och bokning</p>
+            <h2>Måndagar och torsdagar i Simrishamn.</h2>
+            <p>
+              Öppettider 08–16. Bokning sker via telefon till en början.
+              Telefonnummer och bokningsuppgifter kommer snart.
+            </p>
+          </div>
+
+          <div>
+            <p class="eyebrow">Google</p>
+            <a
+              class="review-link"
+              href={googleReviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Läs eller lämna ett omdöme</span>
+              <ExternalLink class="size-5" aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer>
-      <span>Olof Lancing · Legitimerad naprapat</span>
-      <a href="#top">Till toppen</a>
+    <footer class="site-footer">
+      <div class="site-container site-footer__inner">
+        <p>Olof Lancing · Legitimerad naprapat</p>
+        <a class="btn btn-ghost btn-sm" href="#top">Till toppen</a>
+      </div>
     </footer>
+
+    <script>
+      const lightTheme = 'olof-naprapati-light';
+      const darkTheme = 'olof-naprapati-dark';
+      const toggle = document.querySelector('#theme-toggle');
+
+      if (toggle instanceof HTMLInputElement) {
+        const sync = () => {
+          const isDark = document.documentElement.dataset.theme === darkTheme;
+          toggle.checked = isDark;
+          toggle.setAttribute('aria-label', isDark ? 'Byt till ljust tema' : 'Byt till mörkt tema');
+        };
+
+        sync();
+        toggle.addEventListener('change', () => {
+          const theme = toggle.checked ? darkTheme : lightTheme;
+          document.documentElement.dataset.theme = theme;
+          try {
+            localStorage.setItem('olof-theme', theme);
+          } catch {}
+          sync();
+        });
+      }
+    </script>
   </body>
 </html>
-
-<style>
-  :root {
-    color-scheme: light;
-    --bg: #f5f3ed;
-    --surface: #263b66;
-    --ink: #1d2840;
-    --muted: #5d6678;
-    --line: #d5d9e1;
-    --accent: #263b66;
-    --highlight: #aebbd1;
-    --on-accent: #f9f8f3;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    margin: 0;
-    border-top: 6px solid var(--highlight);
-    background: var(--bg);
-    color: var(--ink);
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    line-height: 1.55;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .site-header,
-  main,
-  footer {
-    width: min(1080px, calc(100% - 40px));
-    margin-inline: auto;
-  }
-
-  .site-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    padding: 28px 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .brand {
-    font-weight: 750;
-    letter-spacing: -0.03em;
-  }
-
-  nav {
-    display: flex;
-    gap: 24px;
-    color: var(--muted);
-    font-size: 0.92rem;
-  }
-
-  nav a:hover,
-  footer a:hover,
-  .text-link:hover {
-    color: var(--accent);
-  }
-
-  .hero {
-    max-width: 900px;
-    padding: clamp(88px, 14vw, 170px) 0;
-  }
-
-  .eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 0 18px;
-    color: var(--accent);
-    font-size: 0.76rem;
-    font-weight: 750;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-  }
-
-  .eyebrow::before {
-    width: 18px;
-    height: 3px;
-    background: var(--highlight);
-    content: '';
-  }
-
-  h1,
-  h2,
-  p {
-    margin-top: 0;
-  }
-
-  h1 {
-    max-width: 880px;
-    margin-bottom: 28px;
-    font-size: clamp(3rem, 8vw, 6.8rem);
-    line-height: 0.96;
-    letter-spacing: -0.075em;
-  }
-
-  h2 {
-    margin-bottom: 10px;
-    font-size: clamp(1.7rem, 4vw, 3.2rem);
-    line-height: 1.05;
-    letter-spacing: -0.055em;
-  }
-
-  .intro {
-    max-width: 660px;
-    margin-bottom: 34px;
-    color: var(--muted);
-    font-size: clamp(1.1rem, 2vw, 1.3rem);
-  }
-
-  .button {
-    display: inline-flex;
-    min-height: 48px;
-    align-items: center;
-    padding: 0 22px;
-    border-radius: 999px;
-    background: var(--accent);
-    color: var(--on-accent);
-    font-weight: 700;
-  }
-
-  .button:hover {
-    background: var(--ink);
-  }
-
-  .section {
-    padding: 80px 0;
-    border-top: 1px solid var(--line);
-  }
-
-  .section-grid,
-  .contact {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(40px, 8vw, 100px);
-  }
-
-  .section-grid > div,
-  .contact > div {
-    max-width: 520px;
-  }
-
-  .section-grid p,
-  .contact p {
-    color: var(--muted);
-    font-size: 1.06rem;
-  }
-
-  .note {
-    font-size: 0.94rem !important;
-  }
-
-  .price-list {
-    border-top: 1px solid var(--line);
-  }
-
-  .price-list article {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    padding: 28px 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .price-list h2,
-  .price-list p {
-    margin-bottom: 0;
-  }
-
-  .price-list p {
-    color: var(--muted);
-  }
-
-  .price-list strong {
-    font-size: clamp(1.6rem, 4vw, 2.8rem);
-    letter-spacing: -0.05em;
-    white-space: nowrap;
-  }
-
-  .review {
-    padding: 36px;
-    background: var(--surface);
-    color: var(--on-accent);
-  }
-
-  .review .eyebrow {
-    color: var(--on-accent);
-  }
-
-  .text-link {
-    display: inline-block;
-    margin-top: 14px;
-    border-bottom: 1px solid currentColor;
-    font-weight: 700;
-  }
-
-  footer {
-    display: flex;
-    justify-content: space-between;
-    gap: 24px;
-    padding: 32px 0 48px;
-    border-top: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 0.9rem;
-  }
-
-  @media (max-width: 680px) {
-    .site-header,
-    main,
-    footer {
-      width: min(100% - 28px, 1080px);
-    }
-
-    .site-header {
-      align-items: flex-start;
-    }
-
-    nav {
-      flex-direction: column;
-      gap: 6px;
-      text-align: right;
-    }
-
-    .hero {
-      padding: 88px 0;
-    }
-
-    .section {
-      padding: 56px 0;
-    }
-
-    .section-grid,
-    .contact {
-      grid-template-columns: 1fr;
-    }
-
-    .review {
-      padding: 28px;
-    }
-
-    footer {
-      flex-direction: column;
-    }
-  }
-</style>

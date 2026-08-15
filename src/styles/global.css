@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/roboto-slab";
+@import "./olof-theme.css";
+
+@plugin "daisyui" {
+  themes: false;
+}
+
+@import "./site.css";
