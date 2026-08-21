@@ -468,6 +468,10 @@ h3 {
     flex-direction: column;
     justify-content: center;
   }
+
+  .site-footer .btn-ghost {
+    align-self: flex-end;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
