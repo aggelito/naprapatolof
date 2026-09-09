@@ -53,6 +53,14 @@ const googleReviewUrl =
         document.documentElement.dataset.theme = theme;
       })();
     </script>
+    {import.meta.env.PROD && (
+      <script
+        is:inline
+        defer
+        src="https://umami.aghost.io/script.js"
+        data-website-id="4442e406-82a3-4337-b016-36153a8c4de6"
+      ></script>
+    )}
   </head>
   <body>
     <header class="site-header">
