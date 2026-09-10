@@ -3,7 +3,7 @@
  * Keep the shared identity tokens in olof-theme.css unchanged and tune this
  * file when the website needs its own spacing, composition or emphasis.
  */
-:where([data-theme="olof-naprapati-light"], [data-theme="olof-naprapati-dark"]) {
+:where([data-theme="olof-naprapati-light"]) {
   --site-content-width: 72rem;
   --site-reading-width: 42rem;
   --site-gutter: clamp(1.25rem, 4vw, 2.5rem);
@@ -14,12 +14,6 @@
   --site-clay: #c8785c;
   --site-sage: #dfe8df;
   --site-deep: #173b39;
-}
-
-[data-theme="olof-naprapati-dark"] {
-  --site-clay: #e29a7c;
-  --site-sage: #9fc8b0;
-  --site-deep: #0c1715;
 }
 
 html {
@@ -99,22 +93,6 @@ a {
 
 .site-nav .btn {
   min-height: 2.75rem;
-}
-
-.theme-toggle {
-  min-width: 2.75rem;
-  margin-inline-start: 0.35rem;
-}
-
-.theme-toggle:has(input:focus-visible) {
-  outline: 2px solid var(--site-focus-inner);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 5px var(--site-focus-outer);
-}
-
-.theme-toggle input:focus-visible {
-  outline: none;
-  box-shadow: none;
 }
 
 .hero {

@@ -1,5 +1,5 @@
 ---
-import { ArrowRight, CalendarDays, Clock3, ExternalLink, MapPin, Moon, Sun } from '@lucide/astro';
+import { ArrowRight, CalendarDays, Clock3, ExternalLink, MapPin } from '@lucide/astro';
 import '../styles/global.css';
 
 const prices = [
@@ -39,20 +39,6 @@ const googleReviewUrl =
     />
     <meta name="theme-color" content="#f8f5ee" />
     <title>Olof Lancing Naprapat i Simrishamn</title>
-    <script is:inline>
-      (() => {
-        const light = 'olof-naprapati-light';
-        const dark = 'olof-naprapati-dark';
-        let saved;
-        try {
-          saved = localStorage.getItem('olof-theme');
-        } catch {}
-        const theme = saved === light || saved === dark
-          ? saved
-          : matchMedia('(prefers-color-scheme: dark)').matches ? dark : light;
-        document.documentElement.dataset.theme = theme;
-      })();
-    </script>
     {import.meta.env.PROD && (
       <script
         is:inline
@@ -73,15 +59,6 @@ const googleReviewUrl =
           <a class="btn btn-ghost btn-sm" href="#behandling">Behandling</a>
           <a class="btn btn-ghost btn-sm" href="#priser">Priser</a>
           <a class="btn btn-ghost btn-sm" href="#kontakt">Kontakt</a>
-          <label class="swap swap-rotate btn btn-ghost btn-circle btn-sm theme-toggle">
-            <input
-              id="theme-toggle"
-              type="checkbox"
-              aria-label="Byt till mörkt tema"
-            />
-            <Sun class="swap-off size-5" aria-hidden="true" />
-            <Moon class="swap-on size-5" aria-hidden="true" />
-          </label>
         </nav>
       </div>
     </header>
@@ -226,29 +203,5 @@ const googleReviewUrl =
         <a class="btn btn-ghost btn-sm" href="#top">Till toppen</a>
       </div>
     </footer>
-
-    <script>
-      const lightTheme = 'olof-naprapati-light';
-      const darkTheme = 'olof-naprapati-dark';
-      const toggle = document.querySelector('#theme-toggle');
-
-      if (toggle instanceof HTMLInputElement) {
-        const sync = () => {
-          const isDark = document.documentElement.dataset.theme === darkTheme;
-          toggle.checked = isDark;
-          toggle.setAttribute('aria-label', isDark ? 'Byt till ljust tema' : 'Byt till mörkt tema');
-        };
-
-        sync();
-        toggle.addEventListener('change', () => {
-          const theme = toggle.checked ? darkTheme : lightTheme;
-          document.documentElement.dataset.theme = theme;
-          try {
-            localStorage.setItem('olof-theme', theme);
-          } catch {}
-          sync();
-        });
-      }
-    </script>
   </body>
 </html>
