@@ -5,6 +5,7 @@ import '../styles/global.css';
 const prices = [
   { label: 'Nybesök', time: '40 min', price: '750 kr' },
   { label: 'Återbesök', time: '30 min', price: '750 kr' },
+  { label: 'Helgbesök', time: 'Efter överenskommelse', price: '1 000 kr' },
 ];
 
 const careSteps = [
@@ -148,7 +149,7 @@ const googleReviewUrl =
         <div class="site-container">
           <div class="section-heading">
             <p class="eyebrow">Priser</p>
-            <h2>Mina priser.</h2>
+            <h2>Prislista</h2>
             <div class="payment-note">
               <img src="/swish.svg" alt="Swish" width="48" height="48" />
               <p>Hos mig betalar du via Swish.</p>
@@ -182,7 +183,7 @@ const googleReviewUrl =
           </div>
 
           <div>
-            <p class="eyebrow">Google</p>
+            <p class="eyebrow">Google och Instagram</p>
             <a
               class="review-link"
               href={googleReviewUrl}
@@ -190,6 +191,15 @@ const googleReviewUrl =
               rel="noopener noreferrer"
             >
               <span>Läs eller lämna ett omdöme</span>
+              <ExternalLink class="size-5" aria-hidden="true" />
+            </a>
+            <a
+              class="review-link"
+              href="https://www.instagram.com/lancingnaprapati/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>@lancingnaprapati</span>
               <ExternalLink class="size-5" aria-hidden="true" />
             </a>
           </div>
