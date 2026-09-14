@@ -28,6 +28,8 @@ const careSteps = [
 
 const googleReviewUrl =
   'https://www.google.com/search?q=Olof+Lancing+Naprapat+Simrishamn';
+const locationMapUrl =
+  'https://www.google.com/maps/search/?api=1&query=%C3%96sterlen%20Naprapaterna%2C%20Hamngatan%207%2C%20Simrishamn';
 ---
 
 <html lang="sv" data-theme="olof-naprapati-light">
@@ -102,7 +104,15 @@ const googleReviewUrl =
                 <MapPin class="size-5" aria-hidden="true" />
                 <span>
                   <dt>Plats</dt>
-                  <dd>Österlen Naprapaterna<br />Hamngatan 7, Simrishamn</dd>
+                  <dd>
+                    <a
+                      class="hero__location-link"
+                      href={locationMapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Öppna Österlen Naprapaterna i Google Maps"
+                    >Österlen Naprapaterna</a><br />Hamngatan 7, Simrishamn
+                  </dd>
                 </span>
               </div>
             </dl>
