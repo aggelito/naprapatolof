@@ -84,39 +84,50 @@ const locationMapUrl =
             </div>
           </div>
 
-          <aside class="hero__facts" aria-label="Praktisk information">
-            <dl>
-              <div>
-                <CalendarDays class="size-5" aria-hidden="true" />
-                <span>
-                  <dt>Dagar</dt>
-                  <dd>Måndag och torsdag</dd>
-                </span>
-              </div>
-              <div>
-                <Clock3 class="size-5" aria-hidden="true" />
-                <span>
-                  <dt>Öppettider</dt>
-                  <dd>08:00–15:00</dd>
-                </span>
-              </div>
-              <div>
-                <MapPin class="size-5" aria-hidden="true" />
-                <span>
-                  <dt>Plats</dt>
-                  <dd>
-                    <a
-                      class="hero__location-link"
-                      href={locationMapUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Öppna Österlen Naprapaterna i Google Maps"
-                    >Österlen Naprapaterna</a><br />Hamngatan 7, Simrishamn
-                  </dd>
-                </span>
-              </div>
-            </dl>
-          </aside>
+          <div class="hero__side">
+            <img
+              class="hero__portrait"
+              src="/olof-lancing.webp"
+              alt="Olof Lancing ler och håller en kopp."
+              width="1200"
+              height="1200"
+              fetchpriority="high"
+            />
+
+            <aside class="hero__facts" aria-label="Praktisk information">
+              <dl>
+                <div>
+                  <CalendarDays class="size-5" aria-hidden="true" />
+                  <span>
+                    <dt>Dagar</dt>
+                    <dd>Måndag och torsdag</dd>
+                  </span>
+                </div>
+                <div>
+                  <Clock3 class="size-5" aria-hidden="true" />
+                  <span>
+                    <dt>Öppettider</dt>
+                    <dd>08:00–15:00</dd>
+                  </span>
+                </div>
+                <div>
+                  <MapPin class="size-5" aria-hidden="true" />
+                  <span>
+                    <dt>Plats</dt>
+                    <dd>
+                      <a
+                        class="hero__location-link"
+                        href={locationMapUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Öppna Österlen Naprapaterna i Google Maps"
+                      >Österlen Naprapaterna</a><br />Hamngatan 7, Simrishamn
+                    </dd>
+                  </span>
+                </div>
+              </dl>
+            </aside>
+          </div>
         </div>
       </section>
 
