@@ -3,7 +3,7 @@ import { ArrowRight, CalendarDays, Clock3, ExternalLink, MapPin } from '@lucide/
 import '../styles/global.css';
 
 const prices = [
-  { label: 'Nybesök', time: '40 min', price: '750 kr' },
+  { label: 'Nybesök', time: '45 min', price: '750 kr' },
   { label: 'Återbesök', time: '30 min', price: '750 kr' },
   { label: 'Helgbesök', time: 'Efter överenskommelse', price: '1 000 kr' },
 ];
@@ -28,6 +28,7 @@ const careSteps = [
 
 const googleReviewUrl =
   'https://www.google.com/search?q=Olof+Lancing+Naprapat+Simrishamn';
+const bookingUrl = 'https://lancingab.bestille.no/OnCust2/#!/';
 const locationMapUrl =
   'https://www.google.com/maps/search/?api=1&query=%C3%96sterlen%20Naprapaterna%2C%20Hamngatan%207%2C%20Simrishamn';
 ---
@@ -76,8 +77,13 @@ const locationMapUrl =
               Jag erbjuder hands-on behandling, tydliga råd och rehabövningar anpassade efter dig.
             </p>
             <div class="hero__actions">
-              <a class="btn btn-primary hero__booking" href="#kontakt">
-                Kontakt och bokning
+              <a
+                class="btn btn-primary hero__booking"
+                href={bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Boka tid
                 <ArrowRight class="size-5" aria-hidden="true" />
               </a>
               <a class="btn btn-ghost" href="#behandling">Så går det till</a>
