@@ -277,6 +277,23 @@ h3 {
   font-size: 1.05rem;
 }
 
+.about {
+  display: grid;
+  align-items: start;
+  gap: clamp(2.5rem, 7vw, 6rem);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+}
+
+.about__copy {
+  max-width: var(--site-reading-width);
+  color: color-mix(in oklab, var(--color-base-content) 78%, transparent);
+  font-size: 1.05rem;
+}
+
+.about__copy p + p {
+  margin-top: 1rem;
+}
+
 .payment-note {
   display: flex;
   align-items: center;
@@ -455,6 +472,7 @@ h3 {
 
 @media (max-width: 52rem) {
   .hero__grid,
+  .about,
   .speciality,
   .contact-band__grid {
     grid-template-columns: 1fr;
