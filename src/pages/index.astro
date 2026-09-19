@@ -81,6 +81,8 @@ const locationMapUrl =
               <a
                 class="btn btn-primary hero__booking"
                 href={bookingUrl}
+                data-umami-event="booking-click"
+                data-umami-event-location="hero"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -125,6 +127,8 @@ const locationMapUrl =
                       <a
                         class="hero__location-link"
                         href={locationMapUrl}
+                        data-umami-event="map-click"
+                        data-umami-event-location="hero-facts"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Öppna Österlen Naprapaterna i Google Maps"
@@ -233,8 +237,15 @@ const locationMapUrl =
             <p>
               Du hittar mig på Österlen Naprapaterna, Hamngatan 7 i Simrishamn.
               Jag har öppet 08:00–15:00. Ring mig på&nbsp;<a
+                data-umami-event="phone-click"
+                data-umami-event-location="contact"
                 href="tel:+46793256580">+46793256580</a
-              > eller mejla mig på <a href="mailto:info@lancingnaprapati.se">info@lancingnaprapati.se</a>.
+              > eller mejla mig på <a
+                href="mailto:info@lancingnaprapati.se"
+                data-umami-event="email-click"
+                data-umami-event-location="contact"
+                >info@lancingnaprapati.se</a
+              >.
             </p>
           </div>
 
@@ -243,6 +254,8 @@ const locationMapUrl =
             <a
               class="review-link"
               href={googleReviewUrl}
+              data-umami-event="google-review-click"
+              data-umami-event-location="contact"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -252,6 +265,8 @@ const locationMapUrl =
             <a
               class="review-link"
               href="https://www.instagram.com/lancingnaprapati/"
+              data-umami-event="instagram-click"
+              data-umami-event-location="contact"
               target="_blank"
               rel="noopener noreferrer"
             >
