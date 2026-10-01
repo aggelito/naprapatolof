@@ -24,3 +24,10 @@ test('does not add unnamed or unexpected Umami events', () => {
   const trackedEvents = [...page.matchAll(/data-umami-event="([^"]+)"/g)].map((match) => match[1]);
   assert.deepEqual(trackedEvents.sort(), expectedEvents.sort());
 });
+
+test('enables cookieless Core Web Vitals collection on the production tracker', () => {
+  const scripts = [...page.matchAll(/<script[\s\S]*?src="https:\/\/umami\.aghost\.io\/script\.js"[\s\S]*?>/g)];
+  assert.equal(scripts.length, 1, 'Umami script should appear exactly once');
+  assert.match(scripts[0][0], /data-website-id="4442e406-82a3-4337-b016-36153a8c4de6"/);
+  assert.match(scripts[0][0], /data-performance="true"/);
+});
