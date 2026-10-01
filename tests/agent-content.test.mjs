@@ -85,6 +85,13 @@ test('JSON-LD uses schema.org clinic facts from the shared module', () => {
   }
 });
 
+test('includes the Google Search Console HTML verification tag', () => {
+  assert.match(
+    page,
+    /<meta\s+name="google-site-verification"\s+content="kKAgxm7cW1GZvGxoFRP5hYi5ppFCSXWcDgqBoKDQuZA"\s*\/>/,
+  );
+});
+
 test('the page and static files are generated from the shared clinic module', () => {
   assert.match(page, /from ['\"]\.\.\/lib\/clinic['\"]/);
   assert.match(page, /from ['\"]\.\.\/lib\/agent-content['\"]/);
