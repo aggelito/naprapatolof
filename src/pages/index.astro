@@ -1,15 +1,11 @@
 ---
 import { ArrowRight, CalendarDays, Clock3, ExternalLink, MapPin } from '@lucide/astro';
+import { generateJsonLd } from '../lib/agent-content';
+import { clinic } from '../lib/clinic';
 import '../styles/global.css';
 
-const prices = [
-  { label: 'Nybesök', time: '40 min', price: '750 kr' },
-  { label: 'Återbesök', time: '30 min', price: '750 kr' },
-  { label: 'Friskvårdbehandling', price: '938 kr' },
-  { label: 'Helgbesök', time: 'Efter överenskommelse', price: '1 000 kr' },
-  { label: '5-kort', price: '3 500 kr' },
-  { label: '10-kort', price: '6 500 kr' },
-];
+const { prices, bookingUrl, locationMapUrl, googleReviewUrl } = clinic;
+const jsonLd = JSON.stringify(generateJsonLd(clinic));
 
 const careSteps = [
   {
@@ -29,11 +25,6 @@ const careSteps = [
   },
 ];
 
-const googleReviewUrl =
-  'https://www.google.com/search?q=Olof+Lancing+Naprapat+Simrishamn';
-const bookingUrl = 'https://lancingab.bestille.no/OnCust2/#!/';
-const locationMapUrl =
-  'https://www.google.com/maps/search/?api=1&query=%C3%96sterlen%20Naprapaterna%2C%20Hamngatan%207%2C%20Simrishamn';
 ---
 
 <html lang="sv" data-theme="olof-naprapati-light">
@@ -42,7 +33,7 @@ const locationMapUrl =
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Jag är legitimerad naprapat och tar emot patienter på Österlen Naprapaterna, Hamngatan 7 i Simrishamn, på måndagar och torsdagar."
+      content={clinic.description}
     />
     <meta name="theme-color" content="#f8f5ee" />
     <title>Olof Lancing Naprapat i Simrishamn</title>
@@ -54,6 +45,7 @@ const locationMapUrl =
         data-website-id="4442e406-82a3-4337-b016-36153a8c4de6"
       ></script>
     )}
+    <script type="application/ld+json" set:html={jsonLd} />
   </head>
   <body>
     <header class="site-header">
@@ -112,14 +104,14 @@ const locationMapUrl =
                   <CalendarDays class="size-5" aria-hidden="true" />
                   <span>
                     <dt>Dagar</dt>
-                    <dd>Måndag och torsdag</dd>
+                    <dd>{clinic.days}</dd>
                   </span>
                 </div>
                 <div>
                   <Clock3 class="size-5" aria-hidden="true" />
                   <span>
                     <dt>Öppettider</dt>
-                    <dd>08:00–15:00</dd>
+                    <dd>{clinic.hours}</dd>
                   </span>
                 </div>
                 <div>
@@ -134,8 +126,8 @@ const locationMapUrl =
                         data-umami-event-location="hero-facts"
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="Öppna Österlen Naprapaterna i Google Maps"
-                      >Österlen Naprapaterna</a><br />Hamngatan 7, Simrishamn
+                        aria-label={`Öppna ${clinic.locationName} i Google Maps`}
+                      >{clinic.locationName}</a><br />{clinic.streetAddress}, {clinic.addressLocality}
                     </dd>
                   </span>
                 </div>
@@ -238,16 +230,16 @@ const locationMapUrl =
             <p class="eyebrow">Kontakt och bokning</p>
             <h2>Ni är välkomna till mig i Simrishamn måndagar och torsdagar.</h2>
             <p>
-              Du hittar mig på Österlen Naprapaterna, Hamngatan 7 i Simrishamn.
-              Jag har öppet 08:00–15:00. Ring mig på&nbsp;<a
+              Du hittar mig på {clinic.locationName}, {clinic.streetAddress} i {clinic.addressLocality}.
+              Jag har öppet {clinic.hours}. Ring mig på&nbsp;<a
                 data-umami-event="phone-click"
                 data-umami-event-location="contact"
-                href="tel:+46793256580">+46793256580</a
+                href={clinic.telephoneHref}>{clinic.telephone}</a
               > eller mejla mig på <a
-                href="mailto:info@lancingnaprapati.se"
+                href={`mailto:${clinic.email}`}
                 data-umami-event="email-click"
                 data-umami-event-location="contact"
-                >info@lancingnaprapati.se</a
+                >{clinic.email}</a
               >.
             </p>
           </div>
@@ -267,7 +259,7 @@ const locationMapUrl =
             </a>
             <a
               class="review-link"
-              href="https://www.instagram.com/lancingnaprapati/"
+              href={clinic.instagramUrl}
               data-umami-event="instagram-click"
               data-umami-event-location="contact"
               target="_blank"
@@ -285,7 +277,7 @@ const locationMapUrl =
                 <circle cx="12" cy="12" r="4" />
                 <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
               </svg>
-              <span>@lancingnaprapati</span>
+              <span>{clinic.instagramHandle}</span>
               <ExternalLink class="size-5" aria-hidden="true" />
             </a>
           </div>
@@ -295,7 +287,7 @@ const locationMapUrl =
 
     <footer class="site-footer">
       <div class="site-container site-footer__inner">
-        <p>Olof Lancing · Legitimerad naprapat</p>
+        <p>{clinic.personName} · {clinic.jobTitle}</p>
         <a class="btn btn-ghost btn-sm" href="#top">Till toppen</a>
       </div>
     </footer>
