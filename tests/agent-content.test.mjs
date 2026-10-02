@@ -137,8 +137,17 @@ test('practical facts are a valid definition list and the Swish mark is the offi
   assert.equal(swish.length < 20_000, true);
 });
 
+test('the missing page points home and stays out of search', async () => {
+  const missing = await readFile(new URL('../src/pages/404.astro', import.meta.url), 'utf8');
+
+  assert.match(missing, /Sidan finns inte/);
+  assert.match(missing, /href="\/"/);
+  assert.match(missing, /name="robots" content="noindex"/);
+  assert.equal(missing.includes('github.com'), false);
+});
+
 test('the page and static files are generated from the shared clinic module', () => {
-  assert.match(page, /from ['\"]\.\.\/lib\/clinic['\"]/);
+  assert.match(page, /from ['"]\.\.\/lib\/clinic['"]/);
   assert.match(page, /from ['\"]\.\.\/lib\/agent-content['\"]/);
   assert.match(page, /application\/ld\+json/);
   assert.match(page, /generateJsonLd/);

@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="sv" data-theme="olof-naprapati-light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#f8f5ee" />
+    <title>Sidan finns inte | Olof Lancing Naprapat</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-container site-header__inner">
+        <a class="brand" href="/" aria-label="Olof Lancing, till startsidan">
+          <span>Olof Lancing</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="missing">
+      <div class="site-container missing__copy">
+        <p class="eyebrow">404</p>
+        <h1>Sidan finns inte.</h1>
+        <p class="intro">Adressen leder ingenstans.</p>
+        <a class="btn btn-primary" href="/">Till startsidan</a>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  .missing {
+    padding-block: clamp(4.5rem, 12vw, 8rem);
+  }
+
+  .missing__copy {
+    max-width: 36rem;
+  }
+
+  .missing .intro {
+    margin-bottom: 2rem;
+  }
+</style>
