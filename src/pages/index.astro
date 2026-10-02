@@ -1,11 +1,18 @@
 ---
 import { ArrowRight, CalendarDays, Clock3, ExternalLink, MapPin } from '@lucide/astro';
+import { Image } from 'astro:assets';
 import { generateJsonLd } from '../lib/agent-content';
 import { clinic } from '../lib/clinic';
+import portrait from '../assets/olof-lancing.webp';
 import '../styles/global.css';
 
 const { prices, bookingUrl, locationMapUrl, googleReviewUrl } = clinic;
-const jsonLd = JSON.stringify(generateJsonLd(clinic));
+const jsonLd = JSON.stringify(
+  generateJsonLd({
+    ...clinic,
+    imageUrl: new URL(portrait.src, clinic.siteUrl).href,
+  }),
+);
 
 const careSteps = [
   {
@@ -94,13 +101,16 @@ const careSteps = [
           </div>
 
           <div class="hero__side">
-            <img
+            <Image
               class="hero__portrait"
-              src="/olof-lancing.webp"
+              src={portrait}
               alt="Olof Lancing ler och håller en kopp."
-              width="1200"
-              height="1200"
-              fetchpriority="high"
+              width={800}
+              height={800}
+              layout="constrained"
+              widths={[480, 800, 1200]}
+              sizes="(min-width: 52rem) 24rem, calc(100vw - 2rem)"
+              priority
             />
 
             <aside class="hero__facts" aria-label="Praktisk information">

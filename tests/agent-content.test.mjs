@@ -113,6 +113,11 @@ test('practical facts are a valid definition list and the Swish mark is the offi
 
   const swish = await readFile(new URL('../public/swish.svg', import.meta.url), 'utf8');
   assert.match(swish, /Swish_App_Icon_SVG/);
+  assert.match(page, /import \{ Image \} from 'astro:assets'/);
+  assert.match(page, /import portrait from '\.\.\/assets\/olof-lancing\.webp'/);
+  assert.equal(page.includes('src="/olof-lancing.webp"'), false);
+  assert.match(page, /layout="constrained"/);
+  assert.match(page, /widths=\{\[480, 800, 1200\]\}/);
   assert.equal(swish.includes('base64'), false);
   assert.equal(swish.length < 20_000, true);
 });
