@@ -75,6 +75,7 @@ test('JSON-LD uses schema.org clinic facts from the shared module', () => {
   assert.equal(business.address.addressCountry, 'SE');
   assert.equal(person.name, clinic.personName);
   assert.equal(person.jobTitle, clinic.jobTitle);
+  assert.equal(business.sameAs.includes(clinic.googleReviewUrl), true);
 
   const offers = business.makesOffer;
   assert.equal(offers.length, clinic.prices.length);
@@ -90,6 +91,14 @@ test('includes the Google Search Console HTML verification tag', () => {
     page,
     /<meta\s+name="google-site-verification"\s+content="kKAgxm7cW1GZvGxoFRP5hYi5ppFCSXWcDgqBoKDQuZA"\s*\/>/,
   );
+});
+
+test('the Google review link points at the Lancingnaprapati AB listing', () => {
+  assert.equal(
+    clinic.googleReviewUrl,
+    'https://www.google.com/search?kgmid=/g/11zytk23xc&q=Lancingnaprapati+AB',
+  );
+  assert.equal(clinic.googleReviewUrl.includes('Olof+Lancing+Naprapat+Simrishamn'), false);
 });
 
 test('the page and static files are generated from the shared clinic module', () => {

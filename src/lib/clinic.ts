@@ -53,7 +53,8 @@ export const clinic: Clinic = {
   bookingUrl: 'https://lancingab.bestille.no/OnCust2/#!/',
   locationMapUrl:
     'https://www.google.com/maps/search/?api=1&query=%C3%96sterlen%20Naprapaterna%2C%20Hamngatan%207%2C%20Simrishamn',
-  googleReviewUrl: 'https://www.google.com/search?q=Olof+Lancing+Naprapat+Simrishamn',
+  googleReviewUrl:
+    'https://www.google.com/search?kgmid=/g/11zytk23xc&q=Lancingnaprapati+AB',
   instagramUrl: 'https://www.instagram.com/lancingnaprapati/',
   instagramHandle: '@lancingnaprapati',
   imageUrl: 'https://lancingnaprapati.se/olof-lancing.webp',

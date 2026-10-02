@@ -89,7 +89,7 @@ export function generateJsonLd(clinic: Clinic) {
           price: sekAmount(item.price),
           ...(item.time ? { description: item.time } : {}),
         })),
-        sameAs: [clinic.instagramUrl],
+        sameAs: [clinic.instagramUrl, clinic.googleReviewUrl],
         potentialAction: {
           '@type': 'ReserveAction',
           target: clinic.bookingUrl,
