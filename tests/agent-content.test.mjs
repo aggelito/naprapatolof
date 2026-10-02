@@ -38,15 +38,30 @@ test('robots.txt names common AI search crawlers', () => {
 test('llms.txt repeats the live clinic facts', () => {
   const llms = generateLlmsTxt(clinic);
 
-  assert.match(llms, /^# Olof Lancing Naprapat/m);
+  assert.match(llms, /^# Olof Lancing Naprapat\n/);
+  assert.match(llms, /^> Legitimerad naprapat i Simrishamn\.$/m);
+  assert.equal(llms.includes('## Priser'), false);
   assert.equal(llms.includes(clinic.locationName), true);
   assert.equal(llms.includes(clinic.streetAddress), true);
   assert.equal(llms.includes(clinic.addressLocality), true);
   assert.equal(llms.includes(clinic.hours), true);
-  assert.equal(llms.includes(clinic.bookingUrl), true);
   assert.equal(llms.includes(clinic.email), true);
-  assert.equal(llms.includes(clinic.instagramUrl), true);
   assert.equal(llms.includes(clinic.siteUrl), true);
+  assert.match(llms, new RegExp(`\\[Bokning\\]\\(${clinic.bookingUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\)`));
+  assert.match(llms, /\[Klinikfakta\]\(https:\/\/lancingnaprapati\.se\/index\.md\)/);
+  assert.match(llms, /\[Instagram\]\(https:\/\/www\.instagram\.com\/lancingnaprapati\/\)/);
+  assert.match(llms, /\[E-post\]\(mailto:info@lancingnaprapati\.se\)/);
+  assert.match(llms, /\[Webbplatskarta\]\(https:\/\/lancingnaprapati\.se\/sitemap-index\.xml\)/);
+
+  const fileLists = llms.split(/^## /m).slice(1);
+  assert.equal(fileLists.length > 0, true);
+  for (const section of fileLists) {
+    const items = section.split('\n').filter((line) => line.startsWith('- '));
+    assert.equal(items.length > 0, true, section);
+    for (const item of items) {
+      assert.match(item, /^- \[[^\]]+\]\([^)]+\)/);
+    }
+  }
 
   for (const item of clinic.prices) {
     assert.equal(llms.includes(item.label), true, `${item.label} missing from llms.txt`);

@@ -24,32 +24,70 @@ Sitemap: ${clinic.sitemapUrl}
 `;
 }
 
-export function generateLlmsTxt(clinic: Clinic): string {
-  const prices = clinic.prices
+export function clinicMarkdownUrl(clinic: Clinic): string {
+  return `${clinic.siteUrl}/index.md`;
+}
+
+function priceLines(clinic: Clinic): string {
+  return clinic.prices
     .map((item) => {
       const time = item.time ? ` (${item.time})` : '';
       return `- ${item.label}${time}: ${item.price}`;
     })
     .join('\n');
+}
 
-  return `# Olof Lancing Naprapat
+export function generateClinicMarkdown(clinic: Clinic): string {
+  return `# ${clinic.businessName}
 
 > ${clinic.jobTitle} i ${clinic.addressLocality}.
 
-- Webbplats: ${clinic.siteUrl}
+${clinic.description}
+
 - Mottagning: ${clinic.locationName}, ${clinic.streetAddress}, ${clinic.addressLocality}
 - Dagar: ${clinic.days}
 - Öppettider: ${clinic.hours}
-- Bokning: ${clinic.bookingUrl}
-- E-post: ${clinic.email}
-- Telefon: ${clinic.telephone}
-- Instagram: ${clinic.instagramHandle} (${clinic.instagramUrl})
 
 ## Priser
 
-${prices}
+${priceLines(clinic)}
+
+## Kontakt
+
+- [Bokning](${clinic.bookingUrl}): Boka tid
+- [E-post](mailto:${clinic.email}): ${clinic.email}
+- [Telefon](${clinic.telephoneHref}): ${clinic.telephone}
+- [Instagram](${clinic.instagramUrl}): ${clinic.instagramHandle}
+- [Karta](${clinic.locationMapUrl}): ${clinic.locationName}, ${clinic.streetAddress}, ${clinic.addressLocality}
+`;
+}
+
+export function generateLlmsTxt(clinic: Clinic): string {
+  return `# ${clinic.businessName}
+
+> ${clinic.jobTitle} i ${clinic.addressLocality}.
 
 ${clinic.description}
+
+- Mottagning: ${clinic.locationName}, ${clinic.streetAddress}, ${clinic.addressLocality}
+- Dagar: ${clinic.days}
+- Öppettider: ${clinic.hours}
+
+${priceLines(clinic)}
+
+## Sidor
+
+- [Klinikfakta](${clinicMarkdownUrl(clinic)}): Markdownversion av startsidan
+- [Bokning](${clinic.bookingUrl}): Boka tid
+- [Instagram](${clinic.instagramUrl}): ${clinic.instagramHandle}
+
+## Optional
+
+- [E-post](mailto:${clinic.email}): ${clinic.email}
+- [Telefon](${clinic.telephoneHref}): ${clinic.telephone}
+- [Karta](${clinic.locationMapUrl}): ${clinic.locationName}, ${clinic.streetAddress}, ${clinic.addressLocality}
+- [Google](${clinic.googleReviewUrl}): Hitta kliniken på Google
+- [Webbplatskarta](${clinic.sitemapUrl}): Sidor för sökmotorer
 `;
 }
 
