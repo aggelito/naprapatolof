@@ -106,35 +106,35 @@ const careSteps = [
             <aside class="hero__facts" aria-label="Praktisk information">
               <dl>
                 <div>
-                  <CalendarDays class="size-5" aria-hidden="true" />
-                  <span>
-                    <dt>Dagar</dt>
-                    <dd>{clinic.days}</dd>
-                  </span>
+                  <dt>
+                    <CalendarDays class="size-5" aria-hidden="true" />
+                    <span>Dagar</span>
+                  </dt>
+                  <dd>{clinic.days}</dd>
                 </div>
                 <div>
-                  <Clock3 class="size-5" aria-hidden="true" />
-                  <span>
-                    <dt>Öppettider</dt>
-                    <dd>{clinic.hours}</dd>
-                  </span>
+                  <dt>
+                    <Clock3 class="size-5" aria-hidden="true" />
+                    <span>Öppettider</span>
+                  </dt>
+                  <dd>{clinic.hours}</dd>
                 </div>
                 <div>
-                  <MapPin class="size-5" aria-hidden="true" />
-                  <span>
-                    <dt>Plats</dt>
-                    <dd>
-                      <a
-                        class="hero__location-link"
-                        href={locationMapUrl}
-                        data-umami-event="map-click"
-                        data-umami-event-location="hero-facts"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Öppna ${clinic.locationName} i Google Maps`}
-                      >{clinic.locationName}</a><br />{clinic.streetAddress}, {clinic.addressLocality}
-                    </dd>
-                  </span>
+                  <dt>
+                    <MapPin class="size-5" aria-hidden="true" />
+                    <span>Plats</span>
+                  </dt>
+                  <dd>
+                    <a
+                      class="hero__location-link"
+                      href={locationMapUrl}
+                      data-umami-event="map-click"
+                      data-umami-event-location="hero-facts"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Öppna ${clinic.locationName} i Google Maps`}
+                    >{clinic.locationName}</a><br />{clinic.streetAddress}, {clinic.addressLocality}
+                  </dd>
                 </div>
               </dl>
             </aside>

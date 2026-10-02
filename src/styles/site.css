@@ -12,6 +12,7 @@
   --site-focus-inner: var(--color-base-100);
   --site-focus-outer: var(--color-base-content);
   --site-clay: #c8785c;
+  --site-clay-text: #795848;
   --site-sage: #dfe8df;
   --site-deep: #173b39;
 }
@@ -225,15 +226,23 @@ h3 {
 .hero__facts div {
   display: grid;
   grid-template-columns: 1.5rem 1fr;
-  gap: 0 0.8rem;
+  column-gap: 0.8rem;
+  align-items: start;
 }
 
 .hero__facts svg {
-  margin-top: 0.15rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.05rem;
   color: var(--color-accent);
 }
 
 .hero__facts dt {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: 1.5rem 1fr;
+  column-gap: 0.8rem;
+  align-items: center;
   color: color-mix(in oklab, var(--color-base-content) 65%, transparent);
   font-size: 0.78rem;
   font-weight: 700;
@@ -242,6 +251,7 @@ h3 {
 }
 
 .hero__facts dd {
+  grid-column: 2;
   margin: 0;
   font-family: "Roboto Slab Variable", Rockwell, Georgia, serif;
   font-size: 1.12rem;
@@ -324,7 +334,7 @@ h3 {
 .care-step__number {
   display: block;
   margin-bottom: 1.1rem;
-  color: var(--color-accent);
+  color: var(--site-clay-text);
   font-family: "Roboto Slab Variable", Rockwell, Georgia, serif;
   font-size: 1rem;
   font-weight: 700;

@@ -101,6 +101,22 @@ test('the Google review link points at the Lancingnaprapati AB listing', () => {
   assert.equal(clinic.googleReviewUrl.includes('Olof+Lancing+Naprapat+Simrishamn'), false);
 });
 
+test('practical facts are a valid definition list and the Swish mark is the official icon', async () => {
+  assert.equal(/<span>\s*<dt>/.test(page), false);
+  assert.match(page, /<dt>\s*<CalendarDays[^>]*\/>\s*<span>Dagar<\/span>\s*<\/dt>\s*<dd>/);
+  assert.match(page, /<dt>\s*<Clock3[^>]*\/>\s*<span>Öppettider<\/span>\s*<\/dt>\s*<dd>/);
+  assert.match(page, /<dt>\s*<MapPin[^>]*\/>\s*<span>Plats<\/span>\s*<\/dt>\s*<dd>/);
+
+  const css = await readFile(new URL('../src/styles/site.css', import.meta.url), 'utf8');
+  assert.match(css, /--site-clay-text:\s*#795848;/);
+  assert.match(css, /\.care-step__number\s*\{[^}]*color:\s*var\(--site-clay-text\)/s);
+
+  const swish = await readFile(new URL('../public/swish.svg', import.meta.url), 'utf8');
+  assert.match(swish, /Swish_App_Icon_SVG/);
+  assert.equal(swish.includes('base64'), false);
+  assert.equal(swish.length < 20_000, true);
+});
+
 test('the page and static files are generated from the shared clinic module', () => {
   assert.match(page, /from ['\"]\.\.\/lib\/clinic['\"]/);
   assert.match(page, /from ['\"]\.\.\/lib\/agent-content['\"]/);
