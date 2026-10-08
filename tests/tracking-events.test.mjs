@@ -31,3 +31,10 @@ test('enables cookieless Core Web Vitals collection on the production tracker', 
   assert.match(scripts[0][0], /data-website-id="4442e406-82a3-4337-b016-36153a8c4de6"/);
   assert.match(scripts[0][0], /data-performance="true"/);
 });
+
+test('loads the production recorder for replays and heatmaps', () => {
+  const scripts = [...page.matchAll(/<script[\s\S]*?src="https:\/\/umami\.aghost\.io\/recorder\.js"[\s\S]*?>/g)];
+  assert.equal(scripts.length, 1, 'Umami recorder should appear exactly once');
+  assert.match(scripts[0][0], /data-website-id="4442e406-82a3-4337-b016-36153a8c4de6"/);
+  assert.match(page, /import\.meta\.env\.PROD && \([\s\S]*recorder\.js[\s\S]*\)/);
+});

@@ -53,13 +53,21 @@ const careSteps = [
     <link rel="describedby" href="/llms.txt" />
     <link rel="alternate" type="text/markdown" href="/index.md" />
     {import.meta.env.PROD && (
-      <script
-        is:inline
-        defer
-        src="https://umami.aghost.io/script.js"
-        data-website-id="4442e406-82a3-4337-b016-36153a8c4de6"
-        data-performance="true"
-      ></script>
+      <>
+        <script
+          is:inline
+          defer
+          src="https://umami.aghost.io/script.js"
+          data-website-id="4442e406-82a3-4337-b016-36153a8c4de6"
+          data-performance="true"
+        ></script>
+        <script
+          is:inline
+          defer
+          src="https://umami.aghost.io/recorder.js"
+          data-website-id="4442e406-82a3-4337-b016-36153a8c4de6"
+        ></script>
+      </>
     )}
     <script type="application/ld+json" set:html={jsonLd} />
   </head>
