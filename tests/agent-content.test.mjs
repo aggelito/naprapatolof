@@ -127,7 +127,12 @@ test('practical facts are a valid definition list and the Swish mark is the offi
   assert.match(css, /\.care-step__number\s*\{[^}]*color:\s*var\(--site-clay-text\)/s);
 
   const swish = await readFile(new URL('../public/swish.svg', import.meta.url), 'utf8');
+  const epassi = await readFile(new URL('../public/epassi.svg', import.meta.url), 'utf8');
   assert.match(swish, /Swish_App_Icon_SVG/);
+  assert.match(page, /Hos mig betalar du via Swish och Epassi\./);
+  assert.match(page, /src="\/epassi\.svg"/);
+  assert.match(epassi, /M1331\.744 59\.9/);
+  assert.equal(epassi.includes('base64'), false);
   assert.match(page, /import \{ Image \} from 'astro:assets'/);
   assert.match(page, /import portrait from '\.\.\/assets\/olof-lancing\.webp'/);
   assert.equal(page.includes('src="/olof-lancing.webp"'), false);

@@ -311,10 +311,19 @@ h3 {
   margin-top: 1.25rem;
 }
 
-.payment-note img {
+.payment-note__mark,
+.payment-note__wordmark {
+  flex: 0 0 auto;
+}
+
+.payment-note__mark {
   width: 3rem;
   height: 3rem;
-  flex: 0 0 auto;
+}
+
+.payment-note__wordmark {
+  width: auto;
+  height: 1.7rem;
 }
 
 .payment-note p {
