@@ -142,6 +142,12 @@ test('practical facts are a valid definition list and the Swish mark is the offi
   assert.equal(swish.length < 20_000, true);
 });
 
+test('the about text states when the naprapath training started and finished', () => {
+  assert.match(page, /Jag påbörjade min utbildning till naprapat 2016 och var klar 2020\./);
+  assert.match(page, /Legitimationen fick jag 2021\./);
+  assert.equal(page.includes('Jag utbildade mig till naprapat 2020'), false);
+});
+
 test('the missing page points home and stays out of search', async () => {
   const missing = await readFile(new URL('../src/pages/404.astro', import.meta.url), 'utf8');
 
